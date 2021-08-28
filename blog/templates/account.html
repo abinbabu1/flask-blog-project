@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}Account{% endblock %}
+
+{% block page_content %}
+
+  <br><br>
+  <div class="p-3 mb-2 bg-light bg-gradient text-dark">
+    <div align='center'>
+      <h2>
+        {% if current_user.name and current_user.name != 'John Doe' %}
+          {{ current_user.name.split()[0] }}{% else %}
+          {{ current_user.username }}{% endif %}'s account
+      </h2><br>
+      <img align='center' src="{{ profile_image }}" width="300" height="200">
+    </div>
+  </div>
+  <br><br>
+  {{ wtf.quick_form(form) }}
+
+{% endblock %}
